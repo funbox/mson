@@ -949,20 +949,20 @@ Reserved for future use.
 
 ### 4.7 Format
 
-The `format` keyword allows to ensure that the _[Value][]_ matches the specified format.
+Indicates that _[Value][]_ matches the specified format.
 
 Format → `format="`*Format attribute*`"` | `format='`*Format attribute*`'`
 
 The [*format attribute*](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.1) is a string representing one of the built-in formats.
 
-For instance, here we define an article structure with `created_at` _[Property Member Type][]_ that should contain a valid date-time value:
+The following structure
 
 ```
 + article (object)
     + created_at (string, format="date-time")
 ```
 
-This will generate the following Scheme:
+Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Scheme:
 
 ```
 "created_at": {
@@ -972,6 +972,9 @@ This will generate the following Scheme:
 ```
 
 List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
+
+For more information on built-in formats consult [JSON Scheme Validation: Defined formats](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.3).
+
 
 ### 4.8 Pattern
 
