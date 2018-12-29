@@ -447,6 +447,7 @@ Defines extra attributes associated with the implementation of a type.
 - `sample`     - Alternate way to indicate a _[Value][]_ is a sample. See _[Sample][]_.
 - `default`    - Alternate way to indicate a _[Value][]_ is a default. See _[Default][]_.
 - `format`     - Indicates that the _[Value][]_ MUST match the specified format attribute. See _[Format][]_.
+- `pattern`    - Indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
 
@@ -972,6 +973,33 @@ This will generate the following Scheme:
 
 List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
 
+### 4.8 Pattern
+
+Indicates that _[Value][]_ matches the specified regular expression.
+
+Pattern → `pattern=/`*regex*`/`
+
+
+*Regex* represents the regular expression that conforms to the regular expression syntax defined in [ECMA 262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+
+The following structure
+
+```
++ person (object)
+    + phone (string, pattern=/^(\d+)$/)
+```
+
+Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
+
+```
+"phone": {
+    "type": "string",
+    "pattern": "/^(\d+)$/"
+}
+```
+
+For additional information on regular expressions used in JSON Scheme consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
+
 ## 5 Type Inheritance
 A _[Member Type][]_ or _[Named Type][]_ that inherits from another _[Named Type][]_ also inherits any
 _[Nested Member Types][]_ in the same order they are defined in the inherited _[Named Type][]_ and in order based
@@ -1419,6 +1447,7 @@ Following keywords are reserved for future use:
 [Validation]: #46-validations
 [Validations]: #46-validations
 [Format]: #47-format
+[Pattern]: #48-pattern
 
 [Type Inheritance]: #5-type-inheritance
 [Mixin Type]: #51-mixin-type
