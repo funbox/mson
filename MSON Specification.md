@@ -446,6 +446,7 @@ Defines extra attributes associated with the implementation of a type.
 - `nullable`   - instance of this type *Value* MAY be unset (e.g. `null` or `nil`). `nullable` may only be used within properties of objects.
 - `sample`     - Alternate way to indicate a _[Value][]_ is a sample. See _[Sample][]_.
 - `default`    - Alternate way to indicate a _[Value][]_ is a default. See _[Default][]_.
+- `format`     - Indicates that the _[Value][]_ MUST match the specified format attribute. See _[Format][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
 
@@ -945,6 +946,32 @@ _[Sample][]_.
 ### 4.6 Validations
 Reserved for future use.
 
+### 4.7 Format
+
+The `format` keyword allows to ensure that the _[Value][]_ matches the specified format.
+
+Format → `format="`*Format attribute*`"` | `format='`*Format attribute*`'`
+
+The [*format attribute*](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.1) is a string representing one of the built-in formats.
+
+For instance, here we define an article structure with `created_at` _[Property Member Type][]_ that should contain a valid date-time value:
+
+```
++ article (object)
+    + created_at (string, format="date-time")
+```
+
+This will generate the following Scheme:
+
+```
+"created_at": {
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
+
 ## 5 Type Inheritance
 A _[Member Type][]_ or _[Named Type][]_ that inherits from another _[Named Type][]_ also inherits any
 _[Nested Member Types][]_ in the same order they are defined in the inherited _[Named Type][]_ and in order based
@@ -1391,7 +1418,7 @@ Following keywords are reserved for future use:
 [Defaults]: #45-default
 [Validation]: #46-validations
 [Validations]: #46-validations
-
+[Format]: #47-format
 
 [Type Inheritance]: #5-type-inheritance
 [Mixin Type]: #51-mixin-type
