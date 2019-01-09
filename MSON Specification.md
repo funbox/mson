@@ -444,10 +444,10 @@ Defines extra attributes associated with the implementation of a type.
 - `fixed`      - instance of this type structure and values are fixed. This attribute propagates to _[Nested Member Types][]_.
 - `fixed-type` - instance of this type structure is fixed, value is not. This attribute does not propagate to _[Nested Member Types][]_.
 - `nullable`   - instance of this type *Value* MAY be unset (e.g. `null` or `nil`). `nullable` may only be used within properties of objects.
-- `sample`     - Alternate way to indicate a _[Value][]_ is a sample. See _[Sample][]_.
-- `default`    - Alternate way to indicate a _[Value][]_ is a default. See _[Default][]_.
-- `format`     - Indicates that the _[Value][]_ MUST match the specified format attribute. See _[Format][]_.
-- `pattern`    - Indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
+- `sample`     - alternate way to indicate a _[Value][]_ is a sample. See _[Sample][]_.
+- `default`    - alternate way to indicate a _[Value][]_ is a default. See _[Default][]_.
+- `format`     - indicates that the _[Value][]_ MUST match the specified format attribute. See _[Format][]_.
+- `pattern`    - indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
 
