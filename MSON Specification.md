@@ -959,7 +959,7 @@ The following structure
 
 ```
 + article (object)
-    + created_at (string, format="date-time")
+    + `created_at` (string, format="date-time")
 ```
 
 Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Scheme:
