@@ -33,6 +33,8 @@ Markdown Syntax for Object Notation (MSON) is a plain-text syntax for the descri
             - 3.5.2.1 [Variable Type Name][]
             - 3.5.2.2 [Wildcard Type Name][]
         - 3.5.3 [Type Attribute][]
+            - 3.5.3.1 [Format][]
+            - 3.5.3.2 [Pattern][]
     - 3.6 [Description][]
 - 4 [Type Sections][]
     - 4.1 [Block Description][]
@@ -450,6 +452,65 @@ Defines extra attributes associated with the implementation of a type.
 - `pattern`    - indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
+
+##### 3.5.3.1 Format
+
+Indicates that _[Value][]_ matches the specified format.
+
+Format → `format="`*Format attribute*`"` | `format='`*Format attribute*`'`
+
+The [*format attribute*](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.1) is a string representing one of the built-in formats.
+
+The following structure
+
+```
++ article (object)
+    + `created_at` (string, format="date-time")
+```
+
+Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Scheme:
+
+```
+"created_at": {
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
+
+For more information on built-in formats consult [JSON Scheme Validation: Defined formats](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.3).
+
+
+##### 3.5.3.2 Pattern
+
+Indicates that _[Value][]_ matches the specified regular expression.
+
+Pattern → `pattern=/`*regex*`/` | `pattern=/`*regex*`/`*flags*
+
+
+*Regex* represents the regular expression that conforms to the regular expression syntax defined in [ECMA 262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+
+*Flags* represents EcmaScript compatible flags for regular expressions that MAY be specified.
+
+The following structure
+
+```
++ person (object)
+    + phone (string, pattern=/^(\d+)$/)
+```
+
+Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
+
+```
+"phone": {
+    "type": "string",
+    "pattern": "/^(\d+)$/"
+}
+```
+
+For additional information on regular expressions used in JSON Scheme consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
+
 
 ### 3.6 Description
 Describes a _[Member Type][]_ in-line.
@@ -946,64 +1007,6 @@ _[Sample][]_.
 
 ### 4.6 Validations
 Reserved for future use.
-
-### 4.7 Format
-
-Indicates that _[Value][]_ matches the specified format.
-
-Format → `format="`*Format attribute*`"` | `format='`*Format attribute*`'`
-
-The [*format attribute*](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.1) is a string representing one of the built-in formats.
-
-The following structure
-
-```
-+ article (object)
-    + `created_at` (string, format="date-time")
-```
-
-Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Scheme:
-
-```
-"created_at": {
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
-
-For more information on built-in formats consult [JSON Scheme Validation: Defined formats](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.3).
-
-
-### 4.8 Pattern
-
-Indicates that _[Value][]_ matches the specified regular expression.
-
-Pattern → `pattern=/`*regex*`/` | `pattern=/`*regex*`/`*flags*
-
-
-*Regex* represents the regular expression that conforms to the regular expression syntax defined in [ECMA 262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
-
-*Flags* represents EcmaScript compatible flags for regular expressions that MAY be specified.
-
-The following structure
-
-```
-+ person (object)
-    + phone (string, pattern=/^(\d+)$/)
-```
-
-Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
-
-```
-"phone": {
-    "type": "string",
-    "pattern": "/^(\d+)$/"
-}
-```
-
-For additional information on regular expressions used in JSON Scheme consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
 
 ## 5 Type Inheritance
 A _[Member Type][]_ or _[Named Type][]_ that inherits from another _[Named Type][]_ also inherits any
