@@ -863,16 +863,6 @@ With a `fixed-type` _[Type Attribute][]_:
 - If a _[Named Type][]_ or _[Member Type][]_ annotates its type as `fixed-type`, _[Nested Member Types][]_ do not inherit
 the `fixed-type` attribute.
 
-- An `array` based _[Named Type][]_ or _[Member Type][]_ MAY specify `fixed-type` to indicate the structure
-MUST contain items of the specified types only.
-
-    ```
-    - colors (array, fixed-type)
-        - red (string)
-    ```
-
-    Implies a fixed-list `array` structure that MUST only contain any string items; red is an example value.
-
 - An `object` based _[Named Type][]_ or _[Member Type][]_ MAY specify `fixed-type` to indicate an object where all
 the properties MUST be present. Further, such an `object` type structure MUST NOT contain any other properties.
 
