@@ -397,7 +397,7 @@ _[Nested Member Types][]_ members in-line using `[]` as a _Nested Type Name List
 array[number, string]
 ```
 
-Indicates a `array` type structure MAY include distinct numbers or strings as values.
+Indicates a `array` type structure MUST include distinct numbers or strings as values.
 
 ##### 3.5.1.1 Variable Type Specification
 Defines a variable _[Type Specification][]_ to indicate generic _[Named Types][]_.
