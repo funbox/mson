@@ -486,7 +486,7 @@ For more information on built-in formats consult [JSON Scheme Validation: Define
 
 Indicates that _[Value][]_ matches the specified regular expression.
 
-Pattern → `pattern=/`*regex*`/`
+Pattern → `pattern="`*regex*`"`
 
 
 *Regex* represents the regular expression that conforms to the regular expression syntax defined in [ECMA 262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
@@ -495,7 +495,7 @@ The following structure
 
 ```
 + person (object)
-    + phone (string, pattern=/^(\d+)$/)
+    + phone (string, pattern="^(\d+)$")
 ```
 
 Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
@@ -503,7 +503,7 @@ Implies that person structure MAY contain the `phone` property that if presented
 ```
 "phone": {
     "type": "string",
-    "pattern": "/^(\d+)$/"
+    "pattern": "^(\\d+)$"
 }
 ```
 
