@@ -486,12 +486,10 @@ For more information on built-in formats consult [JSON Scheme Validation: Define
 
 Indicates that _[Value][]_ matches the specified regular expression.
 
-Pattern → `pattern=/`*regex*`/` | `pattern=/`*regex*`/`*flags*
+Pattern → `pattern=/`*regex*`/`
 
 
 *Regex* represents the regular expression that conforms to the regular expression syntax defined in [ECMA 262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
-
-*Flags* represents EcmaScript compatible flags for regular expressions that MAY be specified.
 
 The following structure
 
