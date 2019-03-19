@@ -495,7 +495,7 @@ The following structure
 
 ```
 + person (object)
-    + phone (string, pattern="^(\d+)$")
+    + phone (string, pattern="^(\\d+)$")
 ```
 
 Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
