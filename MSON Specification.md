@@ -35,6 +35,7 @@ Markdown Syntax for Object Notation (MSON) is a plain-text syntax for the descri
         - 3.5.3 [Type Attribute][]
             - 3.5.3.1 [Format][]
             - 3.5.3.2 [Pattern][]
+            - 3.5.3.3 [Size Range][]
     - 3.6 [Description][]
 - 4 [Type Sections][]
     - 4.1 [Block Description][]
@@ -450,6 +451,8 @@ Defines extra attributes associated with the implementation of a type.
 - `default`    - alternate way to indicate a _[Value][]_ is a default. See _[Default][]_.
 - `format`     - indicates that the _[Value][]_ MUST match the specified format attribute. See _[Format][]_.
 - `pattern`    - indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
+- `min-length` - specifies a minimum number of elements, which an instance of a type must contain. See _[Size Range][]_.
+- `max-length` - specifies a maximum number of elements, which an instance of a type must contain. See _[Size Range][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
 
@@ -509,6 +512,60 @@ Implies that person structure MAY contain the `phone` property that if presented
 
 For additional information on regular expressions used in JSON Scheme consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
 
+##### 3.5.3.3 Size Range
+
+_Size Range_ → `min-length="`*Value*`"` | `max-length="`*Value*`"`
+
+_Size Range_ provides the information about minimum and maximum number of elements, which an instance of a type must contain.
+
+One may specify _Size Range_ by declaring `min-length` type attribute or `max-length` type attribute (or their combination).
+
+These attributes are applicable for the next primitive types:
+* `array` - attributes define minimum and maximum number of elements inside of array instance;
+* `string` - attributes define minimum and maximum number of symbols of a string instance.
+
+`Value` MUST be either a positive integer or zero. A value of `min-length` attribute MUST be less or equal to a value of `max-length` attribute.
+
+If both `min-length` and `max-length` attributes are defined and they values are equal, _Size Range_ specifies exact number of child elements (or number of symbols in case of string), which an instance of a type must contain.
+
+The following structure
+
+```mson
++ variants (array[string], min-length="3", max-length="3")
+```
+
+indicates, that an array structure MUST contain exactly 3 elements to be valid.
+
+```json
+{
+  "variants": {
+    "type": "array",
+    "minItems": 3,
+    "maxItems": 3,
+    "items": { "type": "string" }
+  }
+}
+```
+
+The following structure
+
+```mson
++ id (string, min-length="3", max-length="5")
+```
+
+indicates, that a string MUST have at least 3 symbols, but no more than 5 symbols, and produces the following JSON Scheme:
+
+```json
+{
+"phone": {
+    "type": "string",
+    "minLength": 3,
+    "maxLength": 5
+  }
+}
+```
+
+For more information about size definition in arrays, see documentation [Array of fixed size](https://github.com/funbox/mson/blob/master/examples/fixed-size-array.md).
 
 ### 3.6 Description
 Describes a _[Member Type][]_ in-line.
