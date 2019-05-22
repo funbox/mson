@@ -36,6 +36,7 @@ Markdown Syntax for Object Notation (MSON) is a plain-text syntax for the descri
             - 3.5.3.1 [Format][]
             - 3.5.3.2 [Pattern][]
             - 3.5.3.3 [Size Range][]
+            - 3.5.3.4 [Range Of Numbers][]
     - 3.6 [Description][]
 - 4 [Type Sections][]
     - 4.1 [Block Description][]
@@ -453,6 +454,8 @@ Defines extra attributes associated with the implementation of a type.
 - `pattern`    - indicates that the _[Value][]_ MUST match the specified regular expression. See _[Pattern][]_.
 - `min-length` - specifies a minimum number of elements, which an instance of a type must contain. See _[Size Range][]_.
 - `max-length` - specifies a maximum number of elements, which an instance of a type must contain. See _[Size Range][]_.
+- `minimum` - specifies a minimum value for an instance of a type. See _[Range Of Numbers][]_.
+- `maximum` - specifies a maximum value for an instance of a type. See _[Range Of Numbers][]_.
 
 A `sample` _Type Attribute_ is mutually exclusive with `default`.
 
@@ -557,7 +560,7 @@ indicates, that a string MUST have at least 3 symbols, but no more than 5 symbol
 
 ```json
 {
-"phone": {
+"id": {
     "type": "string",
     "minLength": 3,
     "maxLength": 5
@@ -566,6 +569,35 @@ indicates, that a string MUST have at least 3 symbols, but no more than 5 symbol
 ```
 
 For more information about size definition in arrays, see documentation [Array of fixed size](https://github.com/funbox/mson/blob/master/examples/fixed-size-array.md).
+
+##### 3.5.3.4 Range Of Numbers
+
+_Range Of Numbers_ → `minimum="`*Value*`"` | `maximum="`*Value*`"`
+
+_Range Of Numbers_ provides the information about minimum and maximum values for an instance of a type.
+
+Use the `minimum` type attribute together with the `maximum` type attribute to create an inclusive range of values.
+
+These attributes works only with `number` type.
+
+The following structure
+
+```mson
++ age (number, minimum="18", maximum="35")
+
+indicates, that value MUST be less than or exactly equal to "maximum" type attribute and greater than or exactly equal to "minimum" type attribute and produces the following JSON Scheme.
+
+```json
+{
+  "age": {
+    "type": "number",
+    "minimum": 18,
+    "maximum": 35,
+  }
+}
+```
+
+For more information about range of numbers see documentation [String reference: Range Of Numbers](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-6.2)
 
 ### 3.6 Description
 Describes a _[Member Type][]_ in-line.
