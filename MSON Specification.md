@@ -474,7 +474,7 @@ The following structure
     + `created_at` (string, format="date-time")
 ```
 
-Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Scheme:
+Implies an object that MAY contain the `created_at` property that if presented MUST be a valid date-time string and produces the following JSON Schema:
 
 ```
 "created_at": {
@@ -483,9 +483,9 @@ Implies an object that MAY contain the `created_at` property that if presented M
 }
 ```
 
-List of the supported built-in formats defined by JSON Scheme specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
+List of the supported built-in formats defined by JSON Schema specification could be found on [String reference: Built-In formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats)
 
-For more information on built-in formats consult [JSON Scheme Validation: Defined formats](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.3).
+For more information on built-in formats consult [JSON Schema Validation: Defined formats](https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-8.3).
 
 
 ##### 3.5.3.2 Pattern
@@ -504,7 +504,7 @@ The following structure
     + phone (string, pattern="^(\\d+)$")
 ```
 
-Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Scheme:
+Implies that person structure MAY contain the `phone` property that if presented MUST match the specified regular expression (i.e. only one or more digit characters are allowed) and produces the following JSON Schema:
 
 ```
 "phone": {
@@ -513,7 +513,7 @@ Implies that person structure MAY contain the `phone` property that if presented
 }
 ```
 
-For additional information on regular expressions used in JSON Scheme consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
+For additional information on regular expressions used in JSON Schema consult [String reference: Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#regular-expressions)
 
 ##### 3.5.3.3 Size Range
 
@@ -556,7 +556,7 @@ The following structure
 + id (string, min-length="3", max-length="5")
 ```
 
-indicates, that a string MUST have at least 3 symbols, but no more than 5 symbols, and produces the following JSON Scheme:
+indicates, that a string MUST have at least 3 symbols, but no more than 5 symbols, and produces the following JSON Schema:
 
 ```json
 {
@@ -585,7 +585,7 @@ The following structure
 ```mson
 + age (number, minimum="18", maximum="35")
 
-indicates, that value MUST be less than or exactly equal to "maximum" type attribute and greater than or exactly equal to "minimum" type attribute and produces the following JSON Scheme.
+indicates, that value MUST be less than or exactly equal to "maximum" type attribute and greater than or exactly equal to "minimum" type attribute and produces the following JSON Schema.
 
 ```json
 {
