@@ -258,9 +258,16 @@ _Property Member Declaration_ → `-` _[Property Name][]_ `:` _[opt]_ _[Value De
 ```
 
 The optional `:` is only applicable in the case where a _[Value Definition][]_ is present and includes a _[Value][]_.
+By default _[Value][]_ serves as a sample value if the property doesn't have `fixed` _[Type Attribute][]_ (including inherited) and as a _[Literal Value][]_ otherwise.
 
 ```
 - company: Apiary (string)
+```
+
+is equivalent to:
+
+```
+- company: Apiary (string, sample)
 ```
 
 #### 3.2.1 Property Name
