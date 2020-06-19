@@ -1130,6 +1130,8 @@ _[Nested Member Types][]_ defined in and inherited from the mixed-in _[Named Typ
 
 _Mixin Type_ → `- Include` _[Type Name][]_ | `- Include` _[Type Definition][]_
 
+#### 5.1.1 Examples of mixin inheritance for objects
+
 _Example 1_
 
 ```
@@ -1173,6 +1175,99 @@ Implies the same structure as:
     - `last_name`
     - prefix: Mr.
 ```
+
+#### 5.1.2 Examples of mixin inheritance for enums
+
+_Example 1_
+
+```
+# East Code (enum)
+
+- EC2A
+- E1
+```
+
+And:
+
+```
+# Post Code (enum)
+
+- N1
+- Include East Code
+```
+
+Implies the same structure as:
+
+```
+# Post Code (enum)
+
+- N1
+- EC2A
+- E1
+```
+
+#### 5.1.3 Examples of mixin inheritance for arrays
+
+_Example 1_
+
+```
+# Default Customers (array)
+
+- John
+- Jack
+```
+
+And:
+
+```
+- customers (array)
+    - Karlin
+    - Include Default Customers
+```
+
+Implies the same structure as:
+
+```
+- customers (array)
+    - Karlin
+    - John
+    - Jack
+```
+
+_Example 2_
+
+Alternately given:
+
+```
+# RefSample (array)
+
+description
+
+## Sample
+- a 
+- b
+```
+
+And:
+
+```
+- Attributes (array)
+    - x
+    - Include RefSample
+    - y
+```
+
+Implies the same structure as:
+
+```
+- Attributes (array)
+    - x
+    - a
+    - b
+    - y
+```
+
+#### 5.1.4 Mixin Type Separation
 
 A _[Mixin Type][]_ MUST use an appropriate _[Member Type Separator][]_ in a _[Member Type Group][]_ in order to specify
 _[Nested Member Types][]_ after a _[Block Description][]_.
