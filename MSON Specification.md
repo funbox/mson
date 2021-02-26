@@ -1346,6 +1346,19 @@ A _One Of Type_ MUST use a `Properties` _[Member Type Separator][]_ in a _[Membe
             - Properties
                 - `first_name`
                 - `last_name`
+    ```  
+- In order to add an inline [Description] to _[Member Type Group]_ or _[Nested Member Types]_.
+
+    ```
+    - zone (object)
+        - One Of
+            - Properties - circle
+                - `kind`
+                - `center`
+                - `radius`
+            - Properties - polygon
+                - `kind`
+                - `polygon` 
     ```
 
 ### 5.3 Generic Named Type
