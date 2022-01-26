@@ -648,3 +648,5 @@ MSON Named Type.
 [Apiary]: http://apiary.io
 [RFC2119]: https://www.ietf.org/rfc/rfc2119
 [MSON Language Specification]: MSON%20Specification.md
+
+[![Sponsored by FunBox](https://funbox.ru/badges/sponsored_by_funbox_centered.svg)](https://funbox.ru)
