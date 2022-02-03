@@ -1629,6 +1629,10 @@ Following keywords are reserved for future use:
 [Wildcard Type Name]: #3522-wildcard-type-name
 [Type Attribute]: #353-type-attribute
 [Type Attributes]: #353-type-attribute
+[Format]: #3531-format
+[Pattern]: #3532-pattern
+[Size Range]: #3533-size-range
+[Range Of Numbers]: #3534-range-of-numbers
 [Description]: #36-description
 [Descriptions]: #36-description
 
@@ -1646,8 +1650,6 @@ Following keywords are reserved for future use:
 [Defaults]: #45-default
 [Validation]: #46-validations
 [Validations]: #46-validations
-[Format]: #47-format
-[Pattern]: #48-pattern
 
 [Type Inheritance]: #5-type-inheritance
 [Mixin Type]: #51-mixin-type
