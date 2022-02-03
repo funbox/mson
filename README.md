@@ -2,6 +2,35 @@
 This document provides an introduction to Markdown Syntax for Object Notation (MSON), a Markdown syntax
 compatible with describing JSON and JSON Schema.
 
+## Disclaimer
+
+This repository is a fork of the [MSON specification](https://github.com/apiaryio/mson) by Apiary.
+It includes some changes compared to the original specification that extend existing MSON syntax.
+
+### Reasons for creating a forked version
+
+In FunBox, we created our tools to work with API documentation. You can look at the [@funboxteam/crafter](https://github.com/funbox/crafter)
+and [@funboxteam/blueprinter-frontend](https://github.com/funbox/blueprinter-frontend) repositories to get a better understanding of what they are.
+
+These tools are mostly based on the original specification, but some newly implemented features also require changes in the specification.
+Moreover, it seems that the current development of MSON specification and API Blueprint specification is abandoned (proved
+by the comment from the [api-blueprint-rfcs](https://github.com/apiaryio/api-blueprint-rfcs/pull/3#issuecomment-930508443) project).
+
+In order to take the opportunity for independent developing of features we decided to make a fork and support it on our own.
+
+### Differences between the fork and the original specification
+
+* New type attributes for a string value: `format` and `pattern`. See [Type Attribute](https://github.com/funbox/mson/blob/master/MSON%20Specification.md#353-type-attribute)
+  section for more information. These attributes give you more precise control over the value validation within JSON Schema.
+* New type attributes for an array value to specify array size: `min-length` and `max-length`. See [Size Range](https://github.com/funbox/mson/blob/master/MSON%20Specification.md#3533-size-range)
+  for more information.
+* New type attributes `minimum` and `maximum` for a numeric value to validate a number against the specified range of values.
+  See [Range Of Numbers](https://github.com/funbox/mson/blob/master/MSON%20Specification.md#3534-range-of-numbers) for more information.
+* Removed definition of the `fixed-type` attribute for arrays. Thus, if an array signature contains nested types it means
+  the array must contain items of the specified types.
+* Described opportunity to define description of One Of elements.
+* A few other non-significant improvements.
+
 ## What?
 MSON is a plain-text, human and machine readable, description format for describing data structures in common markup
 formats such as JSON, XML or YAML.
